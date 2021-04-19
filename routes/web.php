@@ -25,3 +25,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // student routes
 Route::get('/student-list', 'StudentController@index')->name('student-list');
 Route::match(['get','post'], '/student-add', 'StudentController@add')->name('student-add');
+Route::match(['get','post'], '/student-edit/{id}', 'StudentController@edit')->name('student-edit');
+Route::get('/student-delete/{sid}', 'StudentController@studentDelete');

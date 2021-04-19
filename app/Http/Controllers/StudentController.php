@@ -20,7 +20,8 @@ class StudentController extends Controller
     public function index()
     {
         try{
-            return view('dashboard.students.index');
+            $students = $this->student->getAllStudentList();
+            return view('dashboard.students.index', compact('students'));
         }catch (\Exception $e){
             return redirect()->route($this->exception)->with('warning', $e->getMessage()); 
         }
@@ -39,6 +40,31 @@ class StudentController extends Controller
                 }
             }
             return view('dashboard.students.add');
+        }catch (\Exception $e){
+            return redirect()->route($this->exception)->with('warning', $e->getMessage()); 
+        }
+    }
+
+    public function edit(Request $request, $id)
+    {
+        try{
+            $student = Student::findOrfail($id);
+            if($request->isMethod('post')){
+                if($this->student->editStudent($student, $request)){
+                    return redirect()->route('student-list');
+                }
+            }
+            return view('dashboard.students.edit', compact('student'));
+        }catch (\Exception $e){
+            return redirect()->route($this->exception)->with('warning', $e->getMessage()); 
+        }
+    }
+
+    public function studentDelete($sid)
+    {
+        try{
+            Student::where('id', $sid)->update(['is_deleted' => 1]);
+            return redirect()->route('student-list');
         }catch (\Exception $e){
             return redirect()->route($this->exception)->with('warning', $e->getMessage()); 
         }

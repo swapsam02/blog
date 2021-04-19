@@ -32,21 +32,28 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th width="8%">Sr No.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>City</th>
+                                    <th width="12%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($students as $student)
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>{{ $student->mobile }}</td>
+                                    <td>{{ $student->city }}</td>
+                                    <td>
+                                        <a href="{{ route('student-edit',['id' => $student->id]) }}" class="btn btn-outline-success btn-sm btn-flat">Edit</a>
+                                        <a href="{{ url('student-delete/'.$student->id) }}" class="btn btn-outline-danger btn-sm btn-flat">Delete</a>
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
