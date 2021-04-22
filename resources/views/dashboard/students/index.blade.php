@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="content-wrapper">
+    @if(Session::has('msg'))
+        <div id="flashDivId" class="alert alert-{{ Session::get('alert-class', 'success') }}" onclick="$(this).slideUp();" style="border-radius:unset;">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ Session::get('msg') }}</strong>
+        </div>
+    @endif
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">

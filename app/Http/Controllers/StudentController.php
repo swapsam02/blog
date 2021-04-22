@@ -8,6 +8,7 @@ use App\Services\PayUservice\Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Student;
+use Session;
 
 class StudentController extends Controller
 {
@@ -36,7 +37,12 @@ class StudentController extends Controller
                     return redirect()->back()->withErrors($validator)->withInput();
                 }
                 if($this->student->saveStudent($request)){
+                    Session::flash('msg','Student successfully save');
+                    Session::flash('alert-class','success');
                     return redirect()->route('student-list');
+                }else{
+                    Session::flash('msg','Unable to add student.');
+                    Session::flash('alert-class','danger');
                 }
             }
             return view('dashboard.students.add');
