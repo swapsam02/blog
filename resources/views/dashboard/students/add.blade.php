@@ -35,20 +35,29 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="exampleInputname">Name</label>
-                                            <input type="text" class="form-control" id="exampleInputname" name="name" placeholder="Enter name">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="enter name">
+                                            @if($errors->has('name'))
+                                                <label class="error">{{ $errors->first('name') }}</label>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" name="email"  placeholder="Enter email">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" name="email"  placeholder="Enter email" require>
+                                            @if($errors->has('email'))
+                                                <label class="error">{{ $errors->first('email') }}</label>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputMobile">Mobile</label>
-                                            <input type="text" class="form-control" id="exampleInputMobile" name="mobile" placeholder="Enter mobile no">
+                                            <input type="text" class="form-control" id="exampleInputMobile" name="mobile" placeholder="Enter mobile no" require>
+                                            @if($errors->has('mobile'))
+                                                <label class="error">{{ $errors->first('mobile') }}</label>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -56,13 +65,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="exampleInputCity">City</label>
-                                            <input type="text" class="form-control" id="exampleInputCity" name="city" placeholder="Enter city">
+                                            <input type="text" class="form-control" id="exampleInputCity" name="city" placeholder="Enter city" require>
+                                            @if($errors->has('city'))
+                                                <label class="error">{{ $errors->first('city') }}</label>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="exampleInputAddress">Address</label>
-                                            <input type="text" class="form-control" id="exampleInputAddress" name="address" placeholder="Enter address">
+                                            <input type="text" class="form-control" id="exampleInputAddress" name="address" placeholder="Enter address" require>
+                                            @if($errors->has('address'))
+                                                <label class="error">{{ $errors->first('address') }}</label>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

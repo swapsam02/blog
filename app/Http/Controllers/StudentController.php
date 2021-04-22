@@ -72,7 +72,7 @@ class StudentController extends Controller
 
     protected function getValidateStudent($data)
     {
-        $rule = [
+        $rules = [
             'name' => 'required',
             'email' => 'required',
             'mobile' => 'required',
@@ -86,6 +86,6 @@ class StudentController extends Controller
             'city.required' => 'Please enter city',
             'address.required' => 'Please enter address',
         ];
-        return Validator::make($rule, $errmsg, $data);
+        return Validator::make($data, $rules, $errmsg);
     }
 }
