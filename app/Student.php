@@ -8,13 +8,26 @@ use DB;
 
 class Student extends Model
 {
+
     protected $fillable = [
         'name', 'email', 'mobile', 'city', 'address',
     ];
 
+    // hasOne releation
+    public function education()
+    {
+        return $this->hasOne('App\Education');
+    }
+
+    // hasMany releation
+    public function educations()
+    {
+        return $this->hasMany('App\Education');
+    }
+
     public function getAllStudentList()
     {
-        return Student::where('is_deleted', 0)->get();
+        return Student::with('educations')->where('is_deleted', 0)->get();
     }
 
     public function saveStudent(Request $request)

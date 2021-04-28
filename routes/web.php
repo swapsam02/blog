@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -27,3 +27,7 @@ Route::get('/student-list', 'StudentController@index')->name('student-list');
 Route::match(['get','post'], '/student-add', 'StudentController@add')->name('student-add');
 Route::match(['get','post'], '/student-edit/{id}', 'StudentController@edit')->name('student-edit');
 Route::get('/student-delete/{sid}', 'StudentController@studentDelete');
+
+// education routes
+Route::get('/education-list', 'EducationController@index')->name('education-list');
+Route::match(['get','post'], '/education-add', 'EducationController@add')->name('education-add');

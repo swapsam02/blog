@@ -35,7 +35,7 @@
                 </li>
                 @php
                     $activeClass = '';
-                    $systemsetArr = ['student-list','student-add'];
+                    $systemsetArr = ['student-list','student-add','student-edit'];
                     if(in_array(Route::currentRouteName(), $systemsetArr)){
                         $activeClass = 'active';
                     }
@@ -44,6 +44,19 @@
                     <a href="{{ route('student-list') }}" class="nav-link {{ $activeClass }}">
                         <i class="nav-icon fas fa-user-graduate"></i>
                         <p>Student</p>
+                    </a>
+                </li>
+                @php
+                    $activeClass = '';
+                    $systemsetArr = ['education-list','education-add'];
+                    if(in_array(Route::currentRouteName(), $systemsetArr)){
+                        $activeClass = 'active';
+                    }
+                @endphp
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('education-list') }}" class="nav-link {{ $activeClass }}">
+                        <i class="nav-icon fas fa-user-graduate"></i>
+                        <p>Education</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">
